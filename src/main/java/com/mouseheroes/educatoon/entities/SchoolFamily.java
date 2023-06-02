@@ -14,13 +14,13 @@ public class SchoolFamily {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long ID_school_family;
 
-//    @Column({ type: 'character varying', length :80})
+    @Column( name ="bigint", nullable= true )
     private String name;
 
-//    @Column({ type: 'bigint', nullable: true})
+    @Column(  name ="bigint", nullable= true)
     private String CNPJ;
 
-//    @Column({ type: 'bigint', nullable: true})
+    @Column( columnDefinition = "varchar", length = 255)
     private String CPF;
 
  //   @Column({ type: 'character varying', length: 10})
