@@ -1,72 +1,78 @@
 package com.mouseheroes.educatoon.entities;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
+import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 
+@Getter
+@Setter
+@Entity
+@Table( name="school_families")
 public class SchoolFamily {
 
- //   @PrimaryGeneratedColumn() // chave-primaria e auto-incremento
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @Column( name="ID_school_family" )
     private Long ID_school_family;
 
-    @Column( name ="bigint", nullable= true )
+    @Column( name ="character varying", length = 80, nullable = false )
     private String name;
 
     @Column(  name ="bigint", nullable= true)
     private String CNPJ;
 
-    @Column( columnDefinition = "varchar", length = 255)
+    @Column( columnDefinition = "bitint", nullable = true)
     private String CPF;
 
- //   @Column({ type: 'character varying', length: 10})
+    @Column( columnDefinition= "character varying", length=10, nullable = false)
     private String plan_type;
 
-//    @Column({ type: 'date' })
-    private Date dateOfSignature;
+    @Column( columnDefinition= "date", nullable = false)
+    private LocalDate dateOfSignature;
 
-//    @Column({ type: 'real' })
+    @Column( columnDefinition= "real", nullable = false)
     private double planValue;
 
- //   @Column({ type: 'date' })
-    private Date payday;
+    @Column( columnDefinition= "date", nullable = false)
+    private LocalDate payday;
 
-//    @Column({ type: 'character varying', nullable :true, length: 30})
-    @Column(nullable = false)
+    @Column( columnDefinition= "character varying", length=30, nullable = true)
     private String state;
 
-//    @Column({ type: "character varying", nullable :true, length: 30 })
+    @Column( columnDefinition= "character varying", length=30 ,nullable = true)
     private String city;
 
- //   @Column({type: 'character varying', nullable :true, length: 50 })
+    @Column( columnDefinition= "character varying", length = 50, nullable = true)
     private String streetName;
 
- //   @Column()
-    private  String login;
+    @Column( columnDefinition= "character varying", length=20, nullable = false)
+    private String login;
 
- //   @Column()
-    private  String email;
+    @Column( columnDefinition= "character varying", length=50, nullable = false)
+    private String email;
 
- //   @Column()
-    private  String password;
+    @Column( columnDefinition= "character varying", length=20, nullable = false)
+    private String password;
 
-//    @Column({ type: 'bigint', nullable: true })
+    @Column( columnDefinition= "bigint", nullable = true)
     private String phone;
 
- //   @Column({ type: 'bigint'})
-    private  String CEP;
+    @Column( columnDefinition= "bigint", nullable = false)
+    private String CEP;
 
- //   @OneToMany(() => Student, (student :Student) => student.schoolFamily  )
- //   students :Student[];
+    @OneToMany( targetEntity = Student.class )
+    @JoinColumn( name="ID_school_family" )
+    private List<Student> students;
 
-//    @OneToMany(()=> Teacher, (teacher :Teacher) => teacher.schoolFamily )
- //   teachers: Teacher[];
+    @OneToMany( targetEntity = Teacher.class )
+    @JoinColumn( name="ID_school_family" )
+    private List<Teacher> teachers;
 
-//    @OneToMany(()=> FamilyMember, ( fm :FamilyMember) => fm.schoolFamily )
- //   familyMembers :FamilyMember[];
-
+    @OneToMany( targetEntity = FamilyMember.class )
+    @JoinColumn( name="ID_school_family" )
+    private List<FamilyMember> familyMembers;
 }

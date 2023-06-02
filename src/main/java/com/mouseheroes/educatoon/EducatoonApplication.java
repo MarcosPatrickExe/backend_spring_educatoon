@@ -17,7 +17,6 @@ public class EducatoonApplication implements CommandLineRunner {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-
 	public static void main(String[] args) {
 		SpringApplication.run( EducatoonApplication.class, args);
 	}
