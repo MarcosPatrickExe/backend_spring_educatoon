@@ -10,9 +10,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity( name= "students")
+@Entity( name= "students") // Ja tentei remover as Tables e adicionalas para resolver o problema mas infelizmenente ainda N consegui resolver....
 public class Student {
-
+    
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long enrollment; //enrollment = inscricao/matricula
