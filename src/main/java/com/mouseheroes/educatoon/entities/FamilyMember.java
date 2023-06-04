@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Setter
 @Entity( name="family_members")
 public class FamilyMember extends SchoolFamily {
-
+// Aqui infelizmente está ocorrendo um erro de cast da super class: "SinglePage" para "subClass"
+    
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name="ID_family_member" )
