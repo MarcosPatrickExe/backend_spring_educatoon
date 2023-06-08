@@ -4,23 +4,25 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.persistence.Table;
-
+// import javax.persistence.Table;
 
 
 @Getter
 @Setter
-@Entity(name= "teachers")
+@Entity
+@Table( name= "teachers" )
 public class Teacher extends SchoolFamily {
 
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
-    @Column( name="ID_teacher")
+    @Column(name = "ID_teacher")
     private Long IdTeacher;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_school_family")
+
+    @ManyToOne( targetEntity = FamilyMember.class, optional= false)
+    @JoinColumn(name = "ID_school_family", nullable = false)
     private SchoolFamily schoolFamily;
+
 
     @Column( columnDefinition = "character varying", length = 100, nullable = false )
     private String name;

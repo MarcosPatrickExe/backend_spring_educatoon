@@ -10,25 +10,30 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity( name= "students")
-public class Student {
+@Entity
+@Table( name= "students" )
+public class Student extends SchoolFamily {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long enrollment; //enrollment = inscricao/matricula
 
-    @ManyToOne( targetEntity = SchoolFamily.class )
+
+    @ManyToOne( targetEntity = SchoolFamily.class, optional = false )
     @JoinColumn( name= "ID_school_family", nullable = false )
     private SchoolFamily schoolFamily; //ID_school :number;
 
-    @Column( columnDefinition = "character varying", length = 100, nullable = false )
+
+    @Column( columnDefinition="character varying", length = 100, nullable = false )
     private String name;
+
 
     @Column( columnDefinition ="int", nullable = false )
     private String progress;
 
+
     @OneToMany( targetEntity = Doubt.class )
-    @JoinColumn ( name ="enrollment")
+ //   @JoinColumn ( name ="enrollment")
     private List<Doubt> doubts;
 }
 

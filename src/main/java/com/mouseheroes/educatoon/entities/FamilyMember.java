@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity( name="family_members")
+@Entity
+@Table( name= "family_members" )
 public class FamilyMember extends SchoolFamily {
 
     @Id
@@ -15,8 +16,8 @@ public class FamilyMember extends SchoolFamily {
     @Column( name="ID_family_member" )
     private Long IDfamilyMember ;
 
-    @ManyToOne( targetEntity = SchoolFamily.class )
-    @JoinColumn( name="ID_school_family", nullable = false )
+    @ManyToOne( targetEntity = SchoolFamily.class, optional = false )
+    @JoinColumn( name = "ID_school_family", nullable = false )
     private SchoolFamily schoolFamily;
 
     @Column( columnDefinition = "character varying", length =100, nullable = false )

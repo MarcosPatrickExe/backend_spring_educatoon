@@ -1,6 +1,6 @@
 package com.mouseheroes.educatoon;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+//import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -18,12 +19,16 @@ public class EducatoonApplication implements CommandLineRunner {
 	private JdbcTemplate jdbcTemplate;
 
 	public static void main(String[] args) {
+
 		SpringApplication.run( EducatoonApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 
+		System.out.println("aplicattion is running..... args: "+ Arrays.toString(args) );
+
+		/*
 		try {
 			String sql = "SELECT * FROM students";
 			Object classe = this.jdbcTemplate.queryForObject(sql, Object.class);
@@ -35,5 +40,6 @@ public class EducatoonApplication implements CommandLineRunner {
 		}catch(java.lang.Exception error){
 			System.out.println(error);
 		}
+		 */
 	}
 }

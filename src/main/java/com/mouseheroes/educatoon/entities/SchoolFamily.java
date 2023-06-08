@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table( name="school_families")
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 public class SchoolFamily {
 
     @Id
@@ -65,14 +66,14 @@ public class SchoolFamily {
     private String CEP;
 
     @OneToMany( targetEntity = Student.class )
-    @JoinColumn( name="ID_school_family" )
+  //  @JoinColumn( name="ID_school_family" )
     private List<Student> students;
 
     @OneToMany( targetEntity = Teacher.class )
-    @JoinColumn( name="ID_school_family" )
+   // @JoinColumn( name="ID_school_family" )
     private List<Teacher> teachers;
 
     @OneToMany( targetEntity = FamilyMember.class )
-    @JoinColumn( name="ID_school_family" )
+   // @JoinColumn( name="ID_school_family" )
     private List<FamilyMember> familyMembers;
 }
