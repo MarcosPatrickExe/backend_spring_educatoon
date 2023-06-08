@@ -10,9 +10,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table( name= "students" )
-public class Student extends SchoolFamily {
+@Entity( name= "students") // Ja tentei remover as Tables e adicionalas para resolver o problema mas infelizmenente ainda N consegui resolver....
+public class Student {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
