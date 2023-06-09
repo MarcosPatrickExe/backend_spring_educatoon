@@ -3,6 +3,7 @@ package com.mouseheroes.educatoon.entities;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+/*
 
 
 @Getter
@@ -27,3 +28,4 @@ public class FamilyMember extends SchoolFamily {
     @Column( columnDefinition = "int", nullable = false )
     private Integer progress;
 }
+*/

@@ -17,9 +17,10 @@ public class SchoolFamilyController {
     SchoolFamilyRepo schoolFamilyRepo;
 
     @GetMapping( name="/schoolfamilies")
-    public List<SchoolFamily> getAll(){
+    public String getAll(){
 
         System.out.println("GET request detected....");
-        return this.schoolFamilyRepo.findAll();
+        return "Hello";
+       // return this.schoolFamilyRepo.findAll();
     }
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table( name="school_families")
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
+//@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 public class SchoolFamily {
 
     @Id
@@ -20,16 +20,16 @@ public class SchoolFamily {
     @Column( name="ID_school_family" )
     private Long ID_school_family;
 
-    @Column( name ="character varying", length = 80, nullable = false )
+    @Column( name ="varchar", length = 80, nullable = false )
     private String name;
 
     @Column(  name ="bigint", nullable= true)
     private String CNPJ;
 
-    @Column( columnDefinition = "bitint", nullable = true)
+    @Column( columnDefinition = "bigint", nullable = true)
     private String CPF;
 
-    @Column( columnDefinition= "character varying", length=10, nullable = false)
+    @Column( columnDefinition= "varchar", length=10, nullable = false)
     private String plan_type;
 
     @Column( columnDefinition= "date", nullable = false)
@@ -41,22 +41,22 @@ public class SchoolFamily {
     @Column( columnDefinition= "date", nullable = false)
     private LocalDate payday;
 
-    @Column( columnDefinition= "character varying", length=30, nullable = true)
+    @Column( columnDefinition= "varchar", length=30, nullable = true)
     private String state;
 
-    @Column( columnDefinition= "character varying", length=30 ,nullable = true)
+    @Column( columnDefinition= "varchar", length=30 ,nullable = true)
     private String city;
 
-    @Column( columnDefinition= "character varying", length = 50, nullable = true)
+    @Column( columnDefinition= "varchar", length = 50, nullable = true)
     private String streetName;
 
-    @Column( columnDefinition= "character varying", length=20, nullable = false)
+    @Column( columnDefinition= "varchar", length=20, nullable = false)
     private String login;
 
-    @Column( columnDefinition= "character varying", length=50, nullable = false)
+    @Column( columnDefinition= "varchar", length=50, nullable = false)
     private String email;
 
-    @Column( columnDefinition= "character varying", length=20, nullable = false)
+    @Column( columnDefinition = "character", length=20, nullable = false)
     private String password;
 
     @Column( columnDefinition= "bigint", nullable = true)
@@ -65,7 +65,7 @@ public class SchoolFamily {
     @Column( columnDefinition= "bigint", nullable = false)
     private String CEP;
 
-    @OneToMany( targetEntity = Student.class )
+/*    @OneToMany( targetEntity = Student.class )
   //  @JoinColumn( name="ID_school_family" )
     private List<Student> students;
 
@@ -75,5 +75,5 @@ public class SchoolFamily {
 
     @OneToMany( targetEntity = FamilyMember.class )
    // @JoinColumn( name="ID_school_family" )
-    private List<FamilyMember> familyMembers;
+    private List<FamilyMember> familyMembers;*/
 }

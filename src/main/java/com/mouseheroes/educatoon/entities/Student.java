@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 //import org.springframework.data.annotation.Id;
-
+/*
 
 @Getter
 @Setter
@@ -34,5 +34,5 @@ public class Student {
     @OneToMany( targetEntity = Doubt.class )
  //   @JoinColumn ( name ="enrollment")
     private List<Doubt> doubts;
-}
+}*/
 

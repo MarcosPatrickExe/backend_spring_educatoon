@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.time.LocalDate;
 
 
+/*
 @Getter
 @Setter
 @Entity
@@ -31,4 +32,4 @@ public class Doubt extends Student {
     @ManyToOne( targetEntity = Student.class, optional =false )
     @JoinColumn( name="student_enrollment", nullable = false )
     private Student student;
-}
+}*/

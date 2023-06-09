@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 // import javax.persistence.Table;
 
+/*
 
 @Getter
 @Setter
@@ -29,4 +30,4 @@ public class Teacher extends SchoolFamily {
 
     @Column( columnDefinition = "character varying", length = 30, nullable = false )
     private String discipline;
-}
+}*/
