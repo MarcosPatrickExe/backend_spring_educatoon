@@ -1,5 +1,6 @@
 package com.mouseheroes.educatoon.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -13,17 +14,17 @@ import lombok.Setter;
 @Entity
 @Table( name="school_families")
 //@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-public class SchoolFamily {
+public class SchoolFamily implements Serializable {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column( name="ID_school_family" )
     private Long ID_school_family;
 
-    @Column( name ="varchar", length = 80, nullable = false )
+    @Column( columnDefinition= "varchar", length = 80, nullable = false )
     private String name;
 
-    @Column(  name ="bigint", nullable= true)
+    @Column( columnDefinition= "varchar",  nullable= true)
     private String CNPJ;
 
     @Column( columnDefinition = "bigint", nullable = true)
