@@ -1,9 +1,8 @@
 package com.mouseheroes.educatoon.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 import java.time.LocalDate;
-import java.util.List;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Table( name="school_families")
 //@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-public class SchoolFamily implements Serializable {
+public class SchoolFamily {// implements Serializable
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -66,13 +65,12 @@ public class SchoolFamily implements Serializable {
     @Column( columnDefinition= "bigint", nullable = false)
     private String CEP;
 
+    @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //targetEntity = Teacher.class
+    private List<Teacher> teachers = new ArrayList<Teacher>();
+
 /*    @OneToMany( targetEntity = Student.class )
   //  @JoinColumn( name="ID_school_family" )
     private List<Student> students;
-
-    @OneToMany( targetEntity = Teacher.class )
-   // @JoinColumn( name="ID_school_family" )
-    private List<Teacher> teachers;
 
     @OneToMany( targetEntity = FamilyMember.class )
    // @JoinColumn( name="ID_school_family" )
