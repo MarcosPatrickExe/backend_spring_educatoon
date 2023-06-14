@@ -17,7 +17,7 @@ public class Teacher {//  extends SchoolFamily
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     @Column(name = "ID_teacher")
-    private Long IdTeacher;
+    private Long ID_Teacher;
 
     @ManyToOne( fetch = FetchType.LAZY, optional= false) // targetEntity = SchoolFamily.class
     @JoinColumn(name = "ID_school_family", nullable = false)

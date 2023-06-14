@@ -13,4 +13,7 @@ public interface SchoolFamilyRepo extends JpaRepository<SchoolFamily, Long> {
     @Override
     List<SchoolFamily> findAll();
 
+    @Override
+    SchoolFamily save( SchoolFamily sf );
+
 }

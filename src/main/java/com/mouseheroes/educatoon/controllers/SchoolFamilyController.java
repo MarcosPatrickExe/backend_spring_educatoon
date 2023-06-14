@@ -4,9 +4,8 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mouseheroes.educatoon.entities.SchoolFamily;
 import com.mouseheroes.educatoon.repositories.SchoolFamilyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -31,8 +30,17 @@ public class SchoolFamilyController {
         );
 
      //   JSONPObject jsonpObject = new JSONPObject();
-
         return listSchoolFamilyPlan;
        // return this.schoolFamilyRepo.findAll();
+    }
+
+    @PostMapping( path="/insertSchoolfamily" )
+    public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily schoolFamily){
+
+          System.out.println("obj received: "+schoolFamily.toString() );
+
+          SchoolFamily sf = this.schoolFamilyRepo.save( schoolFamily );
+
+          return new JSONPObject(schoolFamily.toString(), schoolFamily);
     }
 }

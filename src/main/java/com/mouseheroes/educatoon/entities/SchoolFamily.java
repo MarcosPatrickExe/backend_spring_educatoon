@@ -23,20 +23,20 @@ public class SchoolFamily {// implements Serializable
     @Column(  columnDefinition= "varchar", length = 80, nullable = false )
     private String name;
 
-    @Column( name="CNPJ", columnDefinition= "varchar",  nullable= true)
-    private String CNPJ;
+    @Column( name="CNPJ", columnDefinition= "bigint",  nullable= true)
+    private Long CNPJ;
 
     @Column( name="CPF", columnDefinition = "bigint", nullable = true)
-    private String CPF;
+    private Integer CPF;
 
     @Column( name="plan_type", columnDefinition= "varchar", length=10, nullable = false)
-    private String planType;
+    private String plan_type;
 
     @Column( name="date_of_signature", columnDefinition= "date", nullable = false)
-    private LocalDate dateOfSignature;
+    private LocalDate date_of_signature;
 
     @Column( name="plan_value", columnDefinition= "real", nullable = false)
-    private double planValue;
+    private double plan_value;
 
     @Column( columnDefinition= "date", nullable = false)
     private LocalDate payday;
@@ -48,7 +48,7 @@ public class SchoolFamily {// implements Serializable
     private String city;
 
     @Column( name="street_name", columnDefinition= "varchar", length = 50, nullable = true)
-    private String streetName;
+    private String street_name;
 
     @Column( columnDefinition= "varchar", length=20, nullable = false)
     private String login;
@@ -56,17 +56,17 @@ public class SchoolFamily {// implements Serializable
     @Column( columnDefinition= "varchar", length=50, nullable = false)
     private String email;
 
-    @Column( columnDefinition = "bigint", length=20, nullable = false)
+    @Column( columnDefinition = "varchar", length=20, nullable = false)
     private String password;
 
     @Column( columnDefinition= "bigint", nullable = true)
-    private String phone;
+    private Integer phone;
 
     @Column( columnDefinition= "bigint", nullable = false)
-    private String CEP;
+    private Integer CEP;
 
     @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //targetEntity = Teacher.class
-    private List<Teacher> teachers = new ArrayList<Teacher>();
+    private Set<Teacher> teachers = new HashSet<Teacher>();
 
 /*    @OneToMany( targetEntity = Student.class )
   //  @JoinColumn( name="ID_school_family" )
