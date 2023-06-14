@@ -21,34 +21,34 @@ public class SchoolFamily implements Serializable {
     @Column( name="ID_school_family" )
     private Long ID_school_family;
 
-    @Column( columnDefinition= "varchar", length = 80, nullable = false )
+    @Column(  columnDefinition= "varchar", length = 80, nullable = false )
     private String name;
 
-    @Column( columnDefinition= "varchar",  nullable= true)
+    @Column( name="CNPJ", columnDefinition= "varchar",  nullable= true)
     private String CNPJ;
 
-    @Column( columnDefinition = "bigint", nullable = true)
+    @Column( name="CPF", columnDefinition = "bigint", nullable = true)
     private String CPF;
 
-    @Column( columnDefinition= "varchar", length=10, nullable = false)
-    private String plan_type;
+    @Column( name="plan_type", columnDefinition= "varchar", length=10, nullable = false)
+    private String planType;
 
-    @Column( columnDefinition= "date", nullable = false)
+    @Column( name="date_of_signature", columnDefinition= "date", nullable = false)
     private LocalDate dateOfSignature;
 
-    @Column( columnDefinition= "real", nullable = false)
+    @Column( name="plan_value", columnDefinition= "real", nullable = false)
     private double planValue;
 
     @Column( columnDefinition= "date", nullable = false)
     private LocalDate payday;
 
-    @Column( columnDefinition= "varchar", length=30, nullable = true)
+    @Column( columnDefinition= "varchar", length = 30, nullable = true)
     private String state;
 
-    @Column( columnDefinition= "varchar", length=30 ,nullable = true)
+    @Column( columnDefinition= "varchar", length = 30, nullable = true)
     private String city;
 
-    @Column( columnDefinition= "varchar", length = 50, nullable = true)
+    @Column( name="street_name", columnDefinition= "varchar", length = 50, nullable = true)
     private String streetName;
 
     @Column( columnDefinition= "varchar", length=20, nullable = false)
@@ -57,7 +57,7 @@ public class SchoolFamily implements Serializable {
     @Column( columnDefinition= "varchar", length=50, nullable = false)
     private String email;
 
-    @Column( columnDefinition = "character", length=20, nullable = false)
+    @Column( columnDefinition = "bigint", length=20, nullable = false)
     private String password;
 
     @Column( columnDefinition= "bigint", nullable = true)
