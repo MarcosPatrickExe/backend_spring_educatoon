@@ -71,11 +71,11 @@ public class SchoolFamily {// implements Serializable
     @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //targetEntity = Teacher.class
     private Set<Teacher> teachers = new HashSet<Teacher>();
 
+    @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL, targetEntity = FamilyMember.class )
+    private Set<FamilyMember> familyMembers = new HashSet<FamilyMember>();
+
 /*    @OneToMany( targetEntity = Student.class )
   //  @JoinColumn( name="ID_school_family" )
     private List<Student> students;
-
-    @OneToMany( targetEntity = FamilyMember.class )
-   // @JoinColumn( name="ID_school_family" )
-    private List<FamilyMember> familyMembers;*/
+*/
 }

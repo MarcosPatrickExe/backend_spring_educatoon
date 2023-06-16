@@ -3,15 +3,15 @@ package com.mouseheroes.educatoon.entities;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
-/*
+
 
 
 @Getter
 @Setter
 @Entity
 @Table( name= "family_members" )
-public class FamilyMember extends SchoolFamily {
-// Aqui infelizmente está ocorrendo um erro de cast da super class: "SinglePage" para "subClass"
+public class FamilyMember {
+// Aqui estava ocorrendo um erro de cast da super class: "SinglePage" para "subClass"
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -20,7 +20,7 @@ public class FamilyMember extends SchoolFamily {
 
     @ManyToOne( targetEntity = SchoolFamily.class, optional = false )
     @JoinColumn( name = "ID_school_family", nullable = false )
-    private SchoolFamily schoolFamily;
+    private SchoolFamily ID_school_family;
 
     @Column( columnDefinition = "character varying", length =100, nullable = false )
     private String name;
@@ -28,4 +28,4 @@ public class FamilyMember extends SchoolFamily {
     @Column( columnDefinition = "int", nullable = false )
     private Integer progress;
 }
-*/
+
