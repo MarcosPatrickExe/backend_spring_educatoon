@@ -27,7 +27,7 @@ public class SchoolFamily {// implements Serializable
     private Long CNPJ;
 
     @Column( name="CPF", columnDefinition = "bigint", nullable = true)
-    private Integer CPF;
+    private Long CPF;
 
     @Column( name="plan_type", columnDefinition= "varchar", length=10, nullable = false)
     private String plan_type;

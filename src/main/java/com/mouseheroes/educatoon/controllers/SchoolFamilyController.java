@@ -35,12 +35,18 @@ public class SchoolFamilyController {
     }
 
     @PostMapping( path="/insertSchoolfamily" )
-    public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily schoolFamily){
+    public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily newSchoolFamilyPlan){
 
-          System.out.println("obj received: "+schoolFamily.toString() );
+          System.out.println("obj received: "+newSchoolFamilyPlan.toString() );
 
-          SchoolFamily sf = this.schoolFamilyRepo.save( schoolFamily );
+      //   List<SchoolFamily> allPlans = this.schoolFamilyRepo.findAll();
 
-          return new JSONPObject(schoolFamily.toString(), schoolFamily);
+     //     SchoolFamily sf = this.schoolFamilyRepo.existsById( newSchoolFamilyPlan);
+
+      //    allPlans.stream()  if(newSchoolFamilyPlan.getID_school_family() != ){ }
+
+          SchoolFamily sf = this.schoolFamilyRepo.save( newSchoolFamilyPlan );
+
+          return new JSONPObject(newSchoolFamilyPlan.toString(), newSchoolFamilyPlan);
     }
 }
