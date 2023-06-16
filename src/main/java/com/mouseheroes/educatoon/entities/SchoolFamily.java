@@ -16,7 +16,10 @@ import lombok.Setter;
 public class SchoolFamily {// implements Serializable
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(  name="my_generator_sequence_by_one", initialValue = 4, allocationSize = 1)
+    // gereando valores IDs a partir do 4 porque o banco ja eh inicializado com 3 registros.
+    // 'allocationSize' define que o ID vai ser incrementado em uma unidade
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator="my_generator_sequence_by_one" )
     @Column( name="ID_school_family" )
     private Long ID_school_family;
 

@@ -37,16 +37,20 @@ public class SchoolFamilyController {
     @PostMapping( path="/insertSchoolfamily" )
     public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily newSchoolFamilyPlan){
 
-          System.out.println("obj received: "+newSchoolFamilyPlan.toString() );
+          if( newSchoolFamilyPlan.getID_school_family() == null ){
+                  List<SchoolFamily> allPlans = this.schoolFamilyRepo.findAll();
+                  SchoolFamily lastPlan = allPlans.get( allPlans.size()-1 );
+                  Long lastCurrentId = lastPlan.getID_school_family();
+                  System.out.println("ID do ultimo elemento: "+ lastCurrentId);
 
-      //   List<SchoolFamily> allPlans = this.schoolFamilyRepo.findAll();
+                  newSchoolFamilyPlan.setID_school_family( ++lastCurrentId );
+                  SchoolFamily schoolFamilySsaved = this.schoolFamilyRepo.save( newSchoolFamilyPlan );
+                  System.out.println("NOVO ELEMENTO SALVO COM O ID:  "+ schoolFamilySsaved.getID_school_family() );
+                  return new JSONPObject(newSchoolFamilyPlan.toString(), schoolFamilySsaved);
+          }else{
+                  System.out.println("O NOVO ELEMENTO COM ID "+newSchoolFamilyPlan.getID_school_family()+"JA EXISTE !!");
+          }
 
-     //     SchoolFamily sf = this.schoolFamilyRepo.existsById( newSchoolFamilyPlan);
-
-      //    allPlans.stream()  if(newSchoolFamilyPlan.getID_school_family() != ){ }
-
-          SchoolFamily sf = this.schoolFamilyRepo.save( newSchoolFamilyPlan );
-
-          return new JSONPObject(newSchoolFamilyPlan.toString(), newSchoolFamilyPlan);
+          return null;
     }
 }
