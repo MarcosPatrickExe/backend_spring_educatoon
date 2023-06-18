@@ -14,15 +14,19 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping( value="/")
 public class FamilyMemberController {
 
     @Autowired
     FamilyMemberRepo fmrepo;
+    @Autowired
     SchoolFamilyRepo sfrepo;
 
 
-    @GetMapping(name = "/getAllFamilyMembers")
+    @GetMapping( path = "/getAllFamilyMembers")
     List<FamilyMember> getAll(){
+
+        System.out.println("getAllFamilyMembers REQUISITED !!");
 
         List<FamilyMember> allFM = this.fmrepo.findAll();
 
@@ -33,17 +37,19 @@ public class FamilyMemberController {
         }
 
         System.out.println("DADOS DE TODOS OS MEMBROS DE FAMILIA FORAM RETORNADOS !!");
-        ResponseEntity.status( HttpStatus.OK );
+        //ResponseEntity.status( HttpStatus.OK );
         return allFM;
     }
 
 
 
-    @PostMapping(name = "/insertFamilyMember")
+    @PostMapping(path = "/insertFamilyMember")
     JSONPObject saveFamilyMember(
             @RequestBody FamilyMember newFM,
             @RequestParam( name="idschoolfamily") String schoolFamilyPlanID
     ){
+
+        System.out.println("insertFamilyMember REQUISITED WITH ID OF SchoolFamily: "+schoolFamilyPlanID);
 
         if( newFM != null ){
 
