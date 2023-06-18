@@ -61,7 +61,7 @@ public class FamilyMemberController {
                  newFM.setSchoolFamily( sf.get() );
                  FamilyMember savedFamilyMember = fmrepo.save( newFM );
 
-                 System.out.println("O NOVO MEMBRO "+newFM.getName()+" DO PLANO Escolar/Familia: '"+ sf.get().getName() +"' FOI ADICIONANDO COM SUCESSO !!");
+                 System.out.println("O NOVO MEMBRO '"+newFM.getName()+"' DO PLANO Escolar/Familia: '"+ sf.get().getName() +"' FOI ADICIONANDO COM SUCESSO !!");
                  ResponseEntity.status( HttpStatus.CREATED );
                  return new JSONPObject( savedFamilyMember.toString(), savedFamilyMember);
 
