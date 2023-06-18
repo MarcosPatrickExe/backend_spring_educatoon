@@ -68,10 +68,12 @@ public class SchoolFamily {// implements Serializable
     @Column( columnDefinition= "bigint", nullable = false)
     private Integer CEP;
 
+    // 'mappedBy' faz referencia  a coluna 'schoolFamily' da entidade 'Teacher'
     @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //targetEntity = Teacher.class
     private Set<Teacher> teachers = new HashSet<Teacher>();
 
-    @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL, targetEntity = FamilyMember.class )
+    // 'mappedBy' faz referencia  a coluna 'schoolFamily' da entidade 'FamilyMember'
+    @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //, targetEntity = FamilyMember.class
     private Set<FamilyMember> familyMembers = new HashSet<FamilyMember>();
 
 /*    @OneToMany( targetEntity = Student.class )

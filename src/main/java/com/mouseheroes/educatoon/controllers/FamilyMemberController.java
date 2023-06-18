@@ -21,7 +21,7 @@ public class FamilyMemberController {
     SchoolFamilyRepo sfrepo;
 
 
-    @GetMapping(name = "/familymembers")
+    @GetMapping(name = "/getAllFamilyMembers")
     List<FamilyMember> getAll(){
 
         List<FamilyMember> allFM = this.fmrepo.findAll();
@@ -42,7 +42,7 @@ public class FamilyMemberController {
     @PostMapping(name = "/insertFamilyMember")
     JSONPObject saveFamilyMember(
             @RequestBody FamilyMember newFM,
-            @RequestParam String schoolFamilyPlanID
+            @RequestParam( name="idschoolfamily") String schoolFamilyPlanID
     ){
 
         if( newFM != null ){
@@ -50,7 +50,7 @@ public class FamilyMemberController {
              if( this.sfrepo.existsById( Long.parseLong(schoolFamilyPlanID) ) ){
 
                  SchoolFamily sf = this.sfrepo.getById( Long.parseLong(schoolFamilyPlanID) );
-                 newFM.setID_school_family( sf );
+                 newFM.setSchoolFamily( sf );
                  FamilyMember savedFamilyMember = fmrepo.save( newFM );
 
                  System.out.println("O NOVO MEMBRO "+newFM.getName()+" DO PLANO Escolar/Familia: '"+ sf.getName() +"' FOI ADICIONANDO COM SUCESSO !!");
