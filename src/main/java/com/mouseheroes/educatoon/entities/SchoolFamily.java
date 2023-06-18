@@ -76,11 +76,8 @@ public class SchoolFamily {// implements Serializable
 
     // 'mappedBy' faz referencia  a coluna 'schoolFamily' da entidade 'FamilyMember'
     @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //, targetEntity = FamilyMember.class
-    @JsonIgnore //this annotation fix the error 'Cannot call sendError() after the response has been committed'
     private Set<FamilyMember> familyMembers = new HashSet<FamilyMember>();
 
-/*    @OneToMany( targetEntity = Student.class )
-  //  @JoinColumn( name="ID_school_family" )
-    private List<Student> students;
-*/
+    @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL) // targetEntity = Student.class
+    private Set<Student> students = new HashSet<Student>();
 }

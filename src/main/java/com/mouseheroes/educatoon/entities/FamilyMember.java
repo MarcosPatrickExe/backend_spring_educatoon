@@ -23,7 +23,7 @@ public class FamilyMember{ // implements Serializable{
     private Long id_family_member ;
 
     @ManyToOne( fetch = FetchType.LAZY, optional = false) // targetEntity = SchoolFamily.class, optional = false
-    @JsonIgnore
+    @JsonIgnore // this annotation fix the error 'Cannot call sendError() after the response has been committed'
     @JoinColumn( name = "ID_school_family", nullable = false )
     private SchoolFamily schoolFamily; //ID_school_family
 

@@ -19,7 +19,7 @@ public class Teacher {//  extends SchoolFamily
     private Long ID_Teacher;
 
     @ManyToOne( fetch = FetchType.LAZY, optional= false) // targetEntity = SchoolFamily.class
-    @JoinColumn(name = "ID_school_family", nullable = false)
+    @JoinColumn( name = "ID_school_family", nullable = false)
     private SchoolFamily schoolFamily;
 
     @Column( columnDefinition = "character varying", length = 100, nullable = false )
