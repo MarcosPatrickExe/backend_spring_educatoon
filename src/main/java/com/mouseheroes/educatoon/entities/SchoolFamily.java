@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 import java.time.LocalDate;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -74,6 +76,7 @@ public class SchoolFamily {// implements Serializable
 
     // 'mappedBy' faz referencia  a coluna 'schoolFamily' da entidade 'FamilyMember'
     @OneToMany( mappedBy = "schoolFamily", cascade = CascadeType.ALL ) //, targetEntity = FamilyMember.class
+    @JsonIgnore //this annotation fix the error 'Cannot call sendError() after the response has been committed'
     private Set<FamilyMember> familyMembers = new HashSet<FamilyMember>();
 
 /*    @OneToMany( targetEntity = Student.class )
