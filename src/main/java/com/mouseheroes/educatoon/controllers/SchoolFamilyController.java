@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mouseheroes.educatoon.entities.SchoolFamily;
 import com.mouseheroes.educatoon.repositories.SchoolFamilyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,42 +18,59 @@ public class SchoolFamilyController {
     @Autowired
     SchoolFamilyRepo schoolFamilyRepo;
 
-    @GetMapping( path="/getall")
-    public List<SchoolFamily> getAll(){
+    @GetMapping(path = "/getall")
+    public List<SchoolFamily> getAll() {
 
         System.out.println("GET request detected....");
 
         List<SchoolFamily> listSchoolFamilyPlan = this.schoolFamilyRepo.findAll();
 
         listSchoolFamilyPlan.forEach(
-             schoolFamily -> {
-                 System.out.println("element name: "+schoolFamily.getName() );
-             }
+                schoolFamily -> {
+                    System.out.println("element name: " + schoolFamily.getName());
+                }
         );
 
-     //   JSONPObject jsonpObject = new JSONPObject();
         return listSchoolFamilyPlan;
-       // return this.schoolFamilyRepo.findAll();
     }
 
-    @PostMapping( path="/add" )
-    public JSONPObject insertSchoolFamilyPlan( @RequestBody SchoolFamily newSchoolFamilyPlan ){
 
-          if( newSchoolFamilyPlan.getID_school_family() == null ){
+    @PostMapping(path = "/add")
+    public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily newSchoolFamilyPlan) {
 
-              List<SchoolFamily> allPlans = this.schoolFamilyRepo.findAll();
-              SchoolFamily lastPlan = allPlans.get( allPlans.size()-1 );
-              Long lastCurrentId = lastPlan.getID_school_family();
-              System.out.println("ID do ultimo elemento: "+ lastCurrentId);
+        if (newSchoolFamilyPlan == null) {
+            String message = "O CORPO/DADOS DA REQUISICAO DO NOVO PLANO ESCOLA/FAMILIA NAO PODE ESTAR VAZIO";
+            System.out.println( message);
+            ResponseEntity.status(HttpStatus.BAD_REQUEST);
+            return new JSONPObject( message, null );
 
-              newSchoolFamilyPlan.setID_school_family( ++lastCurrentId );
-              SchoolFamily schoolFamilySsaved = this.schoolFamilyRepo.save( newSchoolFamilyPlan );
-              System.out.println("NOVO ELEMENTO SALVO COM O ID:  "+ schoolFamilySsaved.getID_school_family() );
-              return new JSONPObject(newSchoolFamilyPlan.toString(), schoolFamilySsaved);
-          }else{
-              System.out.println("O NOVO ELEMENTO COM ID "+newSchoolFamilyPlan.getID_school_family()+"JA EXISTE !!");
-          }
+        } else {
+            if (newSchoolFamilyPlan.getID_school_family() == null) {
 
-          return null;
+                SchoolFamily schoolFamilySsaved = this.schoolFamilyRepo.save(newSchoolFamilyPlan);
+                System.out.println("NOVO ELEMENTO SALVO COM O ID:  " + schoolFamilySsaved.getID_school_family());
+                ResponseEntity.status(HttpStatus.CREATED);
+                return new JSONPObject(schoolFamilySsaved.toString(), schoolFamilySsaved);
+            }
+            return null;
+        }
     }
+
+
+    @PostMapping( path = "/login/{loginname}")
+    String loginValidate(
+            @PathVariable(name = "loginname") String login,
+            @RequestBody String password ){
+
+            System.out.println("login name: "+login+" // senha: "+password);
+
+            if( this.schoolFamilyRepo.existsByLoginAndPassword(login, password) ){
+                ResponseEntity.status( HttpStatus.OK );
+                return "Login_success";
+            }
+
+            ResponseEntity.status( HttpStatus.NO_CONTENT );
+            return "Login_failed";
+    }
+
 }

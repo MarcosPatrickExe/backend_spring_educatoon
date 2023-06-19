@@ -21,4 +21,6 @@ public interface SchoolFamilyRepo extends JpaRepository<SchoolFamily, Long> {
 
     @Override
     SchoolFamily save( SchoolFamily sf );
+
+    boolean existsByLoginAndPassword(String login, String password);
 }

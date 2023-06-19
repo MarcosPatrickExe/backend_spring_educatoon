@@ -55,13 +55,13 @@ public class SchoolFamily {// implements Serializable
     @Column( name="street_name", columnDefinition= "varchar", length = 50, nullable = true)
     private String street_name;
 
-    @Column( columnDefinition= "varchar", length=20, nullable = false)
+    @Column( columnDefinition= "varchar", length=40, nullable = false)
     private String login;
 
     @Column( columnDefinition= "varchar", length=50, nullable = false)
     private String email;
 
-    @Column( columnDefinition = "varchar", length=20, nullable = false)
+    @Column( columnDefinition = "varchar", length=30, nullable = false)
     private String password;
 
     @Column( columnDefinition= "bigint", nullable = true)
