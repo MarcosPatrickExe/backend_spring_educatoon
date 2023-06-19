@@ -31,13 +31,13 @@ public class FamilyMemberController {
         List<FamilyMember> allFM = this.fmrepo.findAll();
 
         if( allFM == null){
-            System.out.println("NENHUMA CONTA DE MEMBRO DE FAMILIA ENCONTRADO....");
+            System.out.println("NENHUMA CONTA DE MEMBROS DE FAMILIA ENCONTRADA....");
             ResponseEntity.status( HttpStatus.NO_CONTENT );
             return null;
         }
 
         System.out.println("DADOS DE TODOS OS MEMBROS DE FAMILIA FORAM RETORNADOS !!");
-        //ResponseEntity.status( HttpStatus.OK );
+        ResponseEntity.status( HttpStatus.OK );
         return allFM;
     }
 
@@ -53,8 +53,8 @@ public class FamilyMemberController {
 
         if( newFM != null ){
              if( schoolFamilyPlanID.equals("") ){
-                 System.out.println("O PARAMETRO 'idschoolfamily' PASSADO NAO PODE SER VAZIO !!");
-                 return new JSONPObject("O PARAMETRO 'idschoolfamily' PASSADO NAO PODE SER VAZIO !!", null);
+                 System.out.println("O PARAMETRO 'idschoolfamily' RECEBIDO NAO PODE SER VAZIO !!");
+                 return new JSONPObject("O PARAMETRO 'idschoolfamily' RECEBIDO NAO PODE SER VAZIO !!", null);
 
              }else if( this.sfrepo.existsById( Long.parseLong(schoolFamilyPlanID) ) ){
                  Optional<SchoolFamily> sf = this.sfrepo.findById( Long.parseLong(schoolFamilyPlanID) );

@@ -16,7 +16,8 @@ import lombok.Setter;
 public class Student {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @SequenceGenerator( name="enrollment_generator", initialValue=112233, allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator="enrollment_generator" )
     private Long enrollment; //enrollment = inscricao/matricula
 
     @ManyToOne( fetch = FetchType.LAZY, optional = false ) //targetEntity = SchoolFamily.class,
@@ -24,11 +25,11 @@ public class Student {
     @JoinColumn( name= "ID_school_family", nullable = false )
     private SchoolFamily schoolFamily; //ID_school :number;
 
-    @Column( columnDefinition="character varying", length = 100, nullable = false )
+    @Column( columnDefinition="varchar", length = 100, nullable = false )
     private String name;
 
-    @Column( columnDefinition ="int", nullable = false )
-    private String progress;
+    @Column( columnDefinition ="bigint", nullable = false )
+    private Long progress;
 
   //  @OneToMany( targetEntity = Doubt.class )
  //   @JoinColumn ( name ="enrollment")

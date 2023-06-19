@@ -9,11 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.mouseheroes.educatoon.entities.Student;
+import java.util.List;
 
 
 
 @RestController
-@RequestMapping( name ="/student")
+@RequestMapping( value="/student")
 public class StudentController {
 
     @Autowired
@@ -21,6 +22,24 @@ public class StudentController {
 
     @Autowired
     StudentRepo studentRepo;
+
+
+    @GetMapping( path="/getall" )
+    List<Student> getAllStudents(){
+        System.out.println("ALL STUDENTS WERE REQUESTED !!");
+
+        List<Student> allStudents = this.studentRepo.findAll();
+
+        if( allStudents.isEmpty() ){
+            System.out.println("NENHUMA CONTA DE ESTUDANTE ENCONTRADA.... !!");
+            ResponseEntity.status( HttpStatus.NO_CONTENT );
+            return null;
+        }
+
+        System.out.println("TODOS OS ESTUDANTES FORAM RETORNADOS !!");
+        ResponseEntity.status( HttpStatus.OK );
+        return allStudents;
+    }
 
 
     @PostMapping( path="/add")
@@ -31,12 +50,14 @@ public class StudentController {
 
         if( studentReceived != null ){
 
-            if( this.sfrepo.existsById(  Long.parseLong(schoolFamilyID) )){
-                SchoolFamily sf = this.sfrepo.findById( Long.parseLong(schoolFamilyID) ).get();
+            if( schoolFamilyID.equals("") ){
+                System.out.println("O PARAMETRO 'idschoolfamily' RECEBIDO NAO PODE SER VAZIO !!");
+                return new JSONPObject("O PARAMETRO 'idschoolfamily' RECEBIDO NAO PODE SER VAZIO !!", null);
 
+            }else if( this.sfrepo.existsById(  Long.parseLong(schoolFamilyID) )){
+                SchoolFamily sf = this.sfrepo.findById( Long.parseLong(schoolFamilyID) ).get();
                 studentReceived.setSchoolFamily( sf );
                 Student savedStudent = studentRepo.save( studentReceived );
-
                 System.out.println("O NOVO ESTUDANTE '"+savedStudent.getName()+"' DO PLANO Escolar/Familia: '"+ sf.getName() +"' FOI ADICIONANDO COM SUCESSO !!");
                 ResponseEntity.status(HttpStatus.CREATED );
                 return new JSONPObject( savedStudent.toString(), savedStudent );

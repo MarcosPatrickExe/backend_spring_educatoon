@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Doubt extends Student {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long IDdoubt;
 
     @Column( name = "doubt", columnDefinition = "text", nullable = false)
