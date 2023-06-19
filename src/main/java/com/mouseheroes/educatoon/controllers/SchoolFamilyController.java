@@ -59,18 +59,19 @@ public class SchoolFamilyController {
 
     @PostMapping( path = "/login/{loginname}")
     String loginValidate(
-            @PathVariable(name = "loginname") String login,
-            @RequestBody String password ){
+        @PathVariable(name = "loginname") String login,
+        @RequestBody String password
+    ){
 
-            System.out.println("login name: "+login+" // senha: "+password);
+        System.out.println("login name: "+login+" // senha: "+password);
 
-            if( this.schoolFamilyRepo.existsByLoginAndPassword(login, password) ){
-                ResponseEntity.status( HttpStatus.OK );
-                return "Login_success";
-            }
+        if( this.schoolFamilyRepo.existsByLoginAndPassword(login, password) ){
+            ResponseEntity.status( HttpStatus.OK );
+            return "Login_success";
+        }
 
-            ResponseEntity.status( HttpStatus.NO_CONTENT );
-            return "Login_failed";
+        ResponseEntity.status( HttpStatus.NO_CONTENT );
+        return "Login_failed";
     }
 
 }

@@ -31,7 +31,7 @@ public class StudentController {
         List<Student> allStudents = this.studentRepo.findAll();
 
         if( allStudents.isEmpty() ){
-            System.out.println("    NENHUMA CONTA DE ESTUDANTE ENCONTRADA.... !!");
+            System.out.println("NENHUMA CONTA DE ESTUDANTE ENCONTRADA.... !!");
             ResponseEntity.status( HttpStatus.NO_CONTENT );
             return null;
         }
