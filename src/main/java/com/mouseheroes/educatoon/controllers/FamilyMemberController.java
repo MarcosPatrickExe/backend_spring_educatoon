@@ -23,7 +23,7 @@ public class FamilyMemberController {
     SchoolFamilyRepo sfrepo;
 
 
-    @GetMapping( path = "/getAllMembers")
+    @GetMapping( path = "/getall")
     List<FamilyMember> getAll(){
 
         System.out.println("getAllFamilyMembers REQUISITED !!");
@@ -43,7 +43,7 @@ public class FamilyMemberController {
 
 
 
-    @PostMapping(path = "/insertFamilyMember")
+    @PostMapping(path = "/add")
     JSONPObject saveFamilyMember(
             @RequestBody FamilyMember newFM,
             @RequestParam( name="idschoolfamily") String schoolFamilyPlanID

@@ -10,13 +10,13 @@ import java.util.List;
 
 
 @RestController()
-@RequestMapping(value="/" )
+@RequestMapping( value="/schoolfamily" )
 public class SchoolFamilyController {
 
     @Autowired
     SchoolFamilyRepo schoolFamilyRepo;
 
-    @GetMapping( path="/schoolfamilies")
+    @GetMapping( path="/getall")
     public List<SchoolFamily> getAll(){
 
         System.out.println("GET request detected....");
@@ -34,8 +34,8 @@ public class SchoolFamilyController {
        // return this.schoolFamilyRepo.findAll();
     }
 
-    @PostMapping( path="/insertSchoolfamily" )
-    public JSONPObject insertSchoolFamilyPlan(@RequestBody SchoolFamily newSchoolFamilyPlan){
+    @PostMapping( path="/add" )
+    public JSONPObject insertSchoolFamilyPlan( @RequestBody SchoolFamily newSchoolFamilyPlan ){
 
           if( newSchoolFamilyPlan.getID_school_family() == null ){
 
