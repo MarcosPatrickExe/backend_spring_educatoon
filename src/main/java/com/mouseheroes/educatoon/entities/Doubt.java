@@ -9,6 +9,8 @@ import java.time.LocalTime;
 import java.time.LocalDate;
 
 
+
+// Doubt representa a duvida que os alunos e pessoas do membro da familia terao 
 /*
 @Getter
 @Setter
