@@ -5,7 +5,7 @@ import lombok.Setter;
 import javax.persistence.*;
 // import javax.persistence.Table;
 
-
+// O problema com essa classe 'Teacher' foi resolvido com a classe-entidade "SchoolFamily"
 
 @Getter
 @Setter
