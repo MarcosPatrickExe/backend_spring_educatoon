@@ -27,7 +27,10 @@ public class EducatoonApplication implements CommandLineRunner {
 
 		System.out.println("aplicattion is running..... args: " );// + Arrays.toString(args)
 
+		
 		/*
+		// AQUI TENTOU-SE CRIAR UMA SQL QUERY DO ZERO PARA EXECUTAR NO BANCO 
+  
 		try {
 			String sql = "SELECT * FROM students";
 			Object classe = this.jdbcTemplate.queryForObject(sql, Object.class);
