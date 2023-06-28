@@ -25,7 +25,7 @@ public class EducatoonApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println("aplicattion is running..... args: " );// + Arrays.toString(args)
+		System.out.println("aplicattion is running..... args: " );// + Arrays.toString(args)   para converter argumentos String
 
 		
 		/*
