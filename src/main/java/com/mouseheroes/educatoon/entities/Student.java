@@ -1,13 +1,11 @@
 package com.mouseheroes.educatoon.entities;
-
-
 import javax.persistence.*;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 //import org.springframework.data.annotation.Id;
+
 
 @Getter
 @Setter
