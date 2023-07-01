@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 
 // Doubt representa a duvida que os alunos e pessoas do membro da familia terao 
+// Toda a entidade foi comentada porque ainda vai ser relacionada com a tabela/entidade "Student"
 /*
 @Getter
 @Setter
