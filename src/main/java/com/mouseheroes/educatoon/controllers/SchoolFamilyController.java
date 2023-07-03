@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// PREPARANDO SCHOOL FAMILY ACCOUNT FOR LOGIN
+// PREPARANDO CONTA DE SCHOOL FAMILY PARA LOGIN
 @RestController()
 @RequestMapping( value="/schoolfamily" )
 public class SchoolFamilyController {
