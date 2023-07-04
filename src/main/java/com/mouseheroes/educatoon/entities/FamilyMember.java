@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
+// preparando essa entidade para fazer o login
 
 @Getter
 @Setter
